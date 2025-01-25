@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\GrupoUsuarioController;
 use App\Http\Controllers\Limpiar;
 use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,7 @@ Route::group([
     Route::resource('/users', UsuarioController::class)->names('user');
     Route::resource('/roles', GrupoUsuarioController::class)->names('role');
     Route::resource('/alumnos', AlumnoController::class)->names('alumno');
+    Route::resource('/documentos-curso', DocumentoController::class)->names('documento');
 
 });
 

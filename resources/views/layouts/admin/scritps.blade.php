@@ -12,4 +12,4 @@
 </script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
 
-<script src="{{asset('js/global.js')}}"></script>
+<script src="{{asset('js/general.js')}}"></script>

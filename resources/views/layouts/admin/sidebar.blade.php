@@ -21,6 +21,16 @@
             </a>
         </li>
 
+        <li class="menu">
+            <a href="{{ route('documento.index') }}" {{(substr(Route::currentRouteName() , 0 , strpos(Route::currentRouteName(), '.')) == 'documento' ? 'data-active=true' : '')}}
+            aria-expanded="false" class="dropdown-toggle">
+                <div class="">
+                    <i class="fa-solid fa-folder-open mr-3"></i>
+                    <span>Documentos</span>
+                </div>
+            </a>
+        </li>
+
         @can('ver_opciones')
             <li class="menu">
                 <a href="#components" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('descripcion', 250);
             $table->tinyInteger('completo')->default(0);
+            $table->string('pdf', 250);
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@
     <div class="layout-px-spacing">
         <div class="row" style="margin-top: 15px">
             <div class="col-xl-4 col-lg-4 col-sm-4">
-                @include('ui.busqueda_conletras')
+                {{-- @include('ui.busqueda_conletras') --}}
             </div>
             @can('usuario.create')
                 <div class="col-xl-4 col-lg-4 col-sm-4">

@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             CicloSeeder::class,
             TurnoSeeder::class,
             CursoSeeder::class,
+            PaiSeeder::class,
         ]);
     }
 }

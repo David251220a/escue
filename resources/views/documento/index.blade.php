@@ -9,8 +9,8 @@
 <div class="layout-px-spacing mt-4">
 
     <div class="row layout-spacing">
-        <h2>Alumnos</h2>
-        @livewire('alumno.index-alumno')
+        <h2>Documentos Cursos</h2>
+        @livewire('documento.documento-index')
     </div>
 </div>
 

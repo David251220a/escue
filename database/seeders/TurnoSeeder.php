@@ -15,12 +15,12 @@ class TurnoSeeder extends Seeder
      */
     public function run()
     {
-        Turno::created([
+        Turno::create([
             'estado_id' => 1,
             'descripcion' => 'MAÑANA'
         ]);
 
-        Turno::created([
+        Turno::create([
             'estado_id' => 1,
             'descripcion' => 'TARDE'
         ]);

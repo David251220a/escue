@@ -17,9 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('estado_id')->constrained();
             $table->foreignId('pais_id')->constrained();
-            $table->string('documento')->default('0');
+            $table->string('documento', 12)->unique()->default('0');
             $table->string('nombre');
             $table->string('apellido');
+            $table->date('fecha_nacimiento')->nullable();
             $table->tinyInteger('sexo')->default(0);
             $table->string('email', 250)->nullable();
             $table->string('celular', 12)->nullable();
