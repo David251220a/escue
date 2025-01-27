@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Padre extends Model
 {
     use HasFactory;
+
+    public function hijos()
+    {
+        return $this->hasMany(PadreAlumno::class);
+    }
 }

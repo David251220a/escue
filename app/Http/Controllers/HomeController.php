@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Padre;
+use App\Models\Persona;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $persona = Persona::where('documento', auth()->user()->documento)->first();
+        $padre = Padre::where('persona_id', $persona->id)->first();
+        return view('home', compact('persona', 'padre'));
     }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RoleSeeder::class);
 
-        User::create([
+        $user = User::create([
             'documento' => 4918642,
             'name' => 'David',
             'lastname' => 'Ortiz',
@@ -33,6 +34,21 @@ class DatabaseSeeder extends Seeder
             TurnoSeeder::class,
             CursoSeeder::class,
             PaiSeeder::class,
+            PadreTipoSeeder::class,
+        ]);
+
+        Persona::create([
+            'documento' => 4918642,
+            'nombre' => 'DAVID',
+            'apellido' => 'ORTIZ',
+            'pais_id' => 1,
+            'estado_id' => 1,
+            'fecha_nacimiento' => '1998-11-11',
+            'sexo' => 1,
+            'email' => 'admin@dev',
+            'celular' => '0976820842',
+            'direccion' => 'RUTA 1 KM 19',
+            'foto' => null,
         ]);
     }
 }
