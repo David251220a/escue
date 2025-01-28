@@ -22,6 +22,16 @@
         </li>
 
         <li class="menu">
+            <a href="{{ route('verificar.index') }}" {{(substr(Route::currentRouteName() , 0 , strpos(Route::currentRouteName(), '.')) == 'verificar' ? 'data-active=true' : '')}}
+            aria-expanded="false" class="dropdown-toggle">
+                <div class="">
+                    <i class="fa-solid fa-certificate mr-3"></i>
+                    <span>Verificar</span>
+                </div>
+            </a>
+        </li>
+
+        <li class="menu">
             <a href="{{ route('documento.index') }}" {{(substr(Route::currentRouteName() , 0 , strpos(Route::currentRouteName(), '.')) == 'documento' ? 'data-active=true' : '')}}
             aria-expanded="false" class="dropdown-toggle">
                 <div class="">

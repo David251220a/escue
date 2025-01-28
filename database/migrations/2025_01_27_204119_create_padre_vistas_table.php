@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('padre_alumnos', function (Blueprint $table) {
+        Schema::create('padre_vistas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('estado_id')->constrained();
             $table->foreignId('padre_id')->constrained();
             $table->foreignId('alumno_id')->constrained();
-            $table->foreignId('estado_id')->constrained();
-            $table->boolean('verificado')->default(false);
-            $table->string('documento_frente', 250);
-            $table->string('documento_reverso', 250);
-            $table->bigInteger('usuario_aprobado')->nullable();
-            $table->date('fecha_aprobado')->nullable();
+            $table->foreignId('curso_documento_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('padre_alumnos');
+        Schema::dropIfExists('padre_vistas');
     }
 };

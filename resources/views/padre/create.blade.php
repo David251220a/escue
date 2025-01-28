@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('styles')
+    <link href="{{asset('plugins/sweetalerts/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('plugins/sweetalerts/sweetalert.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -18,4 +20,6 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('plugins/sweetalerts/sweetalert2.min.js')}}"></script>
+    <script src="{{asset('js/padre.js')}}"></script>
 @endsection

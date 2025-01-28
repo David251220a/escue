@@ -9,8 +9,15 @@ class Padre extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function hijos()
     {
-        return $this->hasMany(PadreAlumno::class);
+        return $this->hasMany(PadreAlumno::class)->where('estado_id', 1);
+    }
+
+    public function persona()
+    {
+        return $this->hasOne(Persona::class, 'id', 'persona_id');
     }
 }

@@ -25,4 +25,9 @@ class Alumno extends Model
     {
         return $this->belongsTo(Curso::class);
     }
+
+    public function ciclo()
+    {
+        return $this->belongsTo(Ciclo::class);
+    }
 }

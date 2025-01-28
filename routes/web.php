@@ -3,9 +3,11 @@
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\GrupoUsuarioController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Limpiar;
 use App\Http\Controllers\PadreController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\VerificarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,13 +34,22 @@ Route::group([
     'middleware' => 'auth',
 ], function(){
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('/users', UsuarioController::class)->names('user');
     Route::resource('/roles', GrupoUsuarioController::class)->names('role');
     Route::resource('/alumnos', AlumnoController::class)->names('alumno');
     Route::resource('/documentos-curso', DocumentoController::class)->names('documento');
 
     Route::get('/padres-registro', [PadreController::class, 'create'])->name('padre.create');
+
+    Route::get('/padres-verificar', [VerificarController::class, 'index'])->name('verificar.index');
+    Route::get('/padres-verificar/{padreAlumno}/aprobar', [VerificarController::class, 'aprobar'])->name('verificar.aprobar');
+    Route::get('/padres-verificar/{padreAlumno}/rechazar', [VerificarController::class, 'rechazar'])->name('verificar.rechazar');
+    Route::get('/padres-registro/verificados', [VerificarController::class, 'verificados'])->name('verificar.verificados');
+    Route::get('/padres-registro/rechazados', [VerificarController::class, 'rechazados'])->name('verificar.rechazados');
+
+    Route::post('documentos-registrarVista', [HomeController::class, 'registrarVista'])->name('documentos.registrarVista');
+
 
 });
 
