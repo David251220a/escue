@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -52,6 +53,16 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'documento' => [
+                'required',
+                'string',
+                'max:255',
+                function ($attribute, $value, $fail) {
+                    if (User::where('documento', $value)->exists()) {
+                        $fail('Ya existe un usuario registrado con este número de documento.');
+                    }
+                },
+            ],
         ]);
     }
 
@@ -63,6 +74,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $documento = $data['documento'];
+        $persona = Persona::firstOrCreate(
+            ['documento' => $documento],
+            [
+                'nombre' => $data['name'],
+                'apellido' => $data['lastname'],
+                'pais_id' => 1,
+                'estado_id' => 1,
+                'fecha_nacimiento' => null,
+                'sexo' => 1,
+                'email' => $data['email'],
+                'celular' => null,
+                'direccion' => ' ',
+                'foto' => null,
+            ]
+        );
+
         return User::create([
             'documento' => $data['documento'],
             'name' => $data['name'],

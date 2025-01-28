@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\GrupoUsuarioController;
 use App\Http\Controllers\HomeController;
@@ -29,6 +31,7 @@ Route::get('/', function () {
 Route::get('/limpiar', [Limpiar::class, 'limpiar'])->name('limpiar');
 Route::get('/crear/acceso', [Limpiar::class, 'acceso'])->name('acceso');
 Auth::routes();
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::group([
     'middleware' => 'auth',
@@ -49,6 +52,8 @@ Route::group([
     Route::get('/padres-registro/rechazados', [VerificarController::class, 'rechazados'])->name('verificar.rechazados');
 
     Route::post('documentos-registrarVista', [HomeController::class, 'registrarVista'])->name('documentos.registrarVista');
+
+    Route::get('/consulta', [ConsultaController::class, 'index'])->name('consulta.index');
 
 
 });
